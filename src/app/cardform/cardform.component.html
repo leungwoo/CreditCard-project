@@ -1,0 +1,6 @@
+<form [formGroup]="cardForm">
+  <label for="name">Name:</label>
+  <input id="name" type="text" placeholder="Full Name" formControlName="name" />
+</form>
+<div>Form Control: {{ cardForm.value | json }}</div>
+<div>Form is valid:{{ cardForm.valid }}</div>

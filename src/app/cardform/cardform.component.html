@@ -1,20 +1,164 @@
-<form [formGroup]="cardForm">
-  <label for="name">Name:</label>
-  <input id="name" type="text" placeholder="Full Name" formControlName="name" />
-  <ng-container
-    *ngIf="
-      cardForm.get('name')?.invalid &&
-      cardForm.get('name')?.touched &&
-      cardForm.get('name')?.dirty
-    "
-  >
-    <div *ngIf="cardForm.get('name')?.hasError('required')">
-      Value is Required
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <app-input label="Name:" [control]="nameControl"></app-input>
+  <app-input label="Card Number:" [control]="cardNumberControl"></app-input>
+  <app-input
+    label="Expiration:(MM/YY)"
+    [control]="expirationControl"
+  ></app-input>
+  <app-input label="Security Code:" [control]="securityCodeControl"></app-input>
+
+  <!--Cardnumber-->
+  <!-- <div class="field">
+    <label class="label" for="cardNumber">Card Number:</label>
+    <div class="cardNumber">
+
+      <input
+        class="input"
+        [ngClass]="{
+          'is-danger': showErrors()
+        }"
+        id="number"
+        type="number"
+        placeholder="card number"
+        formControlName="cardNumber"
+      />
     </div>
-    <div *ngIf="cardForm.get('name')?.hasError('minlength')">
-      Value you entered is too short, must be aleast 3 characters minimum
+
+    <ng-container
+      *ngIf="
+        cardForm.get('cardNumber')?.invalid &&
+        cardForm.get('cardNumber')?.touched &&
+        cardForm.get('cardNumber')?.dirty
+      "
+    >
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('cardNumber')?.hasError('required')"
+      >
+        Value is Required
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('cardNumber')?.hasError('minlength')"
+      >
+        Value you entered is too short, must be aleast 3 characters minimum
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('cardNumber')?.hasError('maxlength')"
+      >
+        Lenght too long
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('cardNumber')?.hasError('pattern')"
+      >
+        invalid Format
+      </div>
+    </ng-container>
+  </div> -->
+  <!--Expiration-->
+  <!-- <div class="field">
+    <label class="label" for="expiration">Expiration:(MM/YY)</label>
+    <div class="expiration">
+
+      <input
+        class="input"
+        [ngClass]="{
+          'is-danger': showErrors()
+        }"
+        id="expiration"
+        placeholder="expiration"
+        formControlName="expiration"
+      />
     </div>
-  </ng-container>
+
+    <ng-container
+      *ngIf="
+        cardForm.get('expiration')?.invalid &&
+        cardForm.get('expiration')?.touched &&
+        cardForm.get('expiration')?.dirty
+      "
+    >
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('expiration')?.hasError('required')"
+      >
+        Value is Required
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('expiration')?.hasError('minlength')"
+      >
+        Value you entered is too short, must be aleast 3 characters minimum
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('expiration')?.hasError('maxlength')"
+      >
+        Lenght too long
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('expiration')?.hasError('pattern')"
+      >
+        invalid Format
+      </div>
+    </ng-container>
+  </div> -->
+  <!--SecurityCode-->
+  <!-- <div class="field">
+    <label class="label" for="name">Security Code:</label>
+    <div class="securityCode">
+
+      <input
+        class="input"
+        [ngClass]="{
+          'is-danger': showErrors()
+        }"
+        id="securityCode"
+        placeholder="securityCode"
+        formControlName="securityCode"
+      />
+    </div>
+
+    <ng-container
+      *ngIf="
+        cardForm.get('securityCode')?.invalid &&
+        cardForm.get('securityCode')?.touched &&
+        cardForm.get('securityCode')?.dirty
+      "
+    >
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('securityCode')?.hasError('required')"
+      >
+        Value is Required
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('securityCode')?.hasError('minlength')"
+      >
+        Value you entered is too short, must be aleast 3 characters minimum
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('securityCode')?.hasError('maxlength')"
+      >
+        Lenght too long
+      </div>
+      <div
+        class="help is-danger"
+        *ngIf="cardForm.get('securityCode')?.hasError('pattern')"
+      >
+        invalid Format
+      </div>
+    </ng-container>
+  </div> -->
+
+  <button type="submit" class="button is-primary" [disabled]="cardForm.invalid">
+    Submit
+  </button>
 </form>
 
 <hr />
